@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="AngularApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Angular App</title>
+  <script src="../node_modules/angular/angular.min.js"></script>
+  <script src="../node_modules/angular-route/angular-route.min.js"></script>
+
+</head>
+
+<body>
+  <div><div ng-view></div></div>
+
+<script>
+
+  angular.module('ngViewExample', ['ngRoute'])
+  .config(['$routeProvider', '$locationProvider',
+  function($routeProvider, $locationProvider) {
+    $routeProvider
+      .when('/page1',
+          {controller:'SimpleController',
+           templateUrl:'page1.html'})
+      $routeProvider.
+      when('/page2',
+          {controller:'SimpleController',
+           templateUrl:'page2.html'})
+      $routeProvider
+      .otherwise('/',
+          {redirectTo:'/page1.html'});
+
+$locationProvider.html5Mode(true);
+}])
+    
+    function SimpleController($scope)
+    {
+    angular.module('AngularApp', [])
+    .controller('SimpleController', SimpleController);
+
+      $scope.names = [{name:'mbadi',age:23},
+      {name:'mba',age:20},
+      {name:'oyaro',age:50
+      }];
+    }
+    
+  </script>
+</body>
+</html>
