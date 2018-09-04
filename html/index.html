@@ -10,27 +10,23 @@
 </head>
 
 <body>
-  <div><div ng-view></div></div>
+  <div>
+    <div ng-view=""></div>
+  </div>
 
 <script>
 
-  angular.module('ngViewExample', ['ngRoute'])
-  .config(['$routeProvider', '$locationProvider',
-  function($routeProvider, $locationProvider) {
+  angular.module('AngularApp', ['ngRoute'])
+  .config(function($routeProvider) {
     $routeProvider
       .when('/page1',
           {controller:'SimpleController',
            templateUrl:'page1.html'})
-      $routeProvider.
-      when('/page2',
+      .when('/page2',
           {controller:'SimpleController',
            templateUrl:'page2.html'})
-      $routeProvider
-      .otherwise('/',
-          {redirectTo:'/page1.html'});
-
-$locationProvider.html5Mode(true);
-}])
+      .otherwise({redirectTo:'/page1'});
+  });
     
     function SimpleController($scope)
     {
