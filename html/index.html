@@ -14,52 +14,10 @@
     <div ng-view=""></div>
   </div>
 
-  <script>
+  <script src="./scripts/routes/routes.js"></script>
+  <script src="./scripts/factories/cutomersFactory.js"></script>
+  <script src="./scripts/controllers/cutomersController.js"></script>
 
-    var demoAppp = angular.module('AngularApp', ['ngRoute']);
-    demoAppp.config(function ($routeProvider) {
-      $routeProvider
-        .when('/page1',
-          {
-            controller: 'SimpleController',
-            templateUrl: 'page1.html'
-          })
-        .when('/page2',
-          {
-            controller: 'SimpleController',
-            templateUrl: 'page2.html'
-          })
-        .otherwise({ redirectTo: '/page1' });
-    });
-
-    demoAppp.factory('SimpleFactory', function () {
-
-      var cust = [{ name: 'mbadi', age: 23 },
-      { name: 'mba', age: 20 },
-      {
-        name: 'oyaro', age: 50
-      }];
-
-      var factory = {};
-
-      factory.getCustomers = function () {
-        return cust;
-      }
-      return factory;
-    });
-
-    demoAppp.controller('SimpleController', SimpleController);
-
-    function SimpleController($scope, SimpleFactory) {
-      
-      $scope.names = SimpleFactory.getCustomers();
-
-      $scope.addCustomer = function () {
-        $scope.names.push({ name: $scope.custName, age: $scope.custCity });
-      };
-    }
-
-  </script>
 </body>
 
 </html>
