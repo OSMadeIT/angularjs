@@ -1,7 +1,13 @@
-<div ng-controller="SimpleController">
+<div>
         <input type="text" ng-model="name">
+        <p>{{name}}</p>
         <ul>
           <li ng-repeat="nom in names | filter:name | orderBy:'name'">{{nom.name | uppercase}}-{{nom.age}}</li>
         </ul>
-        <p>{{name}}</p>
+        <label for="addCustomer">Add Customer</label>
+        <input id="addCustomer" placeholder="New Customer" ng-model="custName"><br>
+        <label for="addCity">Add City</label>
+        <input id="addCity" placeholder="New City" ng-model="custCity"><br>
+        <button ng-click="addCustomer()">Add</button><br>
+        <a href="#!/page2">View 2</a>
 </div>

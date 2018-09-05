@@ -1,1 +1,9 @@
-<div>View 2</div>
+<div>
+    <h5>Names</h5>
+    <input type="text" ng-model="name">
+    <p>{{name}}</p>
+    <ul>
+      <li ng-repeat="nom in names | filter:name | orderBy:'name'">{{nom.name | uppercase}}</li>
+    </ul>
+    <a href="#!/page1">View 1</a>
+</div>

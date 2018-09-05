@@ -16,8 +16,8 @@
 
 <script>
 
-  angular.module('AngularApp', ['ngRoute'])
-  .config(function($routeProvider) {
+  var demoAppp = angular.module('AngularApp', ['ngRoute']);
+  demoAppp.config(function($routeProvider) {
     $routeProvider
       .when('/page1',
           {controller:'SimpleController',
@@ -28,15 +28,18 @@
       .otherwise({redirectTo:'/page1'});
   });
     
+  demoAppp.controller('SimpleController', SimpleController);
+
     function SimpleController($scope)
     {
-    angular.module('AngularApp', [])
-    .controller('SimpleController', SimpleController);
-
       $scope.names = [{name:'mbadi',age:23},
       {name:'mba',age:20},
       {name:'oyaro',age:50
       }];
+
+      $scope.addCustomer = function(){
+        $scope.names.push({name:$scope.custName, age:$scope.custCity});
+      }
     }
     
   </script>
